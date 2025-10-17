@@ -1,0 +1,1104 @@
+{% extends "base.html" %}
+
+{% block title %}PDF Merger - Professional PDF Tools{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="home" class="hero-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ff6b6b 100%); position: relative; overflow: hidden;">
+    <!-- Enhanced Background Effects -->
+    <div class="hero-background">
+        <div class="floating-shapes">
+            <div class="shape shape-1 pulse-shape"></div>
+            <div class="shape shape-2 rotate-shape"></div>
+            <div class="shape shape-3 bounce-shape"></div>
+            <div class="shape shape-4 wave-shape"></div>
+            <div class="shape shape-5 spiral-shape"></div>
+            <div class="shape shape-6 morph-shape"></div>
+        </div>
+        <div class="hero-particles"></div>
+        <div class="hero-waves"></div>
+    </div>
+    
+    <!-- Animated Grid Background -->
+    <div class="grid-bg"></div>
+    
+    <div class="container" style="position: relative; z-index: 3;">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <div class="hero-badge mb-4 rainbow-border" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px); border: 2px solid transparent; animation: rainbowBorder 3s linear infinite;">
+                        <i class="fas fa-star me-2 twinkle"></i>Professional PDF Tools
+                    </div>
+                    <h1 class="hero-title mb-4 spectacular-title" style="font-size: 4.5rem; font-weight: 900; text-shadow: 0 0 30px rgba(255,255,255,0.8);">
+                        <span class="word-animation" style="display: inline-block;">Merge</span>
+                        <span class="word-animation" style="display: inline-block; animation-delay: 0.2s;">PDFs</span>
+                        <span class="word-animation" style="display: inline-block; animation-delay: 0.4s;">Like</span>
+                        <span class="word-animation" style="display: inline-block; animation-delay: 0.6s;">a</span><br>
+                        <span class="gradient-text neon-glow spectacular-pro" style="background: linear-gradient(45deg, #ffd93d, #ff6b6b, #4ecdc4, #45b7d1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 400% 400%; animation: rainbowText 2s ease-in-out infinite;">Pro</span>
+                    </h1>
+                    <p class="hero-subtitle mb-5 typewriter" style="font-size: 1.4rem; color: rgba(255,255,255,0.95); text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+                        🚀 Combine, organize, and optimize your PDF documents with our advanced merging technology. 
+                        ⚡ Fast, 🔒 secure, and 🆓 completely free.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-hero-primary me-3 spectacular-btn" onclick="scrollToUpload()" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); border: none; padding: 20px 40px; border-radius: 50px; font-size: 1.3rem; font-weight: 700; color: white; box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4); animation: buttonPulse 2s infinite;">
+                            <i class="fas fa-rocket me-2 rocket-launch"></i>🚀 Start Merging
+                        </button>
+                        <button class="btn btn-hero-outline glass-btn" onclick="scrollToAbout()" style="background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.3); backdrop-filter: blur(15px); padding: 18px 35px; border-radius: 50px; font-size: 1.2rem; font-weight: 600; color: white;">
+                            <i class="fas fa-play me-2 pulse-icon"></i>✨ Learn More
+                        </button>
+                    </div>
+                    <div class="hero-stats mt-5">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="stat-item counter-animation">
+                                    <h3 class="stat-number glow-number" data-target="10000000">0</h3>
+                                    <p class="stat-label">📄 Files Merged</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-item counter-animation">
+                                    <h3 class="stat-number glow-number" data-target="99.9">0</h3>
+                                    <p class="stat-label">⚡ Uptime</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-item counter-animation">
+                                    <h3 class="stat-number glow-number">5⭐</h3>
+                                    <p class="stat-label">🏆 Rating</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-visual">
+                    <div class="pdf-stack spectacular-stack" style="position: relative;">
+                        <!-- Magical Glow Effect -->
+                        <div class="magic-glow"></div>
+                        
+                        <div class="pdf-file pdf-1 floating-pdf" style="animation: floatPdf1 4s ease-in-out infinite;">
+                            <i class="fas fa-file-pdf pdf-icon-glow"></i>
+                            <span>📄 Document 1</span>
+                        </div>
+                        <div class="pdf-file pdf-2 floating-pdf" style="animation: floatPdf2 4s ease-in-out infinite 1s;">
+                            <i class="fas fa-file-pdf pdf-icon-glow"></i>
+                            <span>📄 Document 2</span>
+                        </div>
+                        <div class="pdf-file pdf-3 floating-pdf" style="animation: floatPdf3 4s ease-in-out infinite 2s;">
+                            <i class="fas fa-file-pdf pdf-icon-glow"></i>
+                            <span>📄 Document 3</span>
+                        </div>
+                        <div class="merge-arrow magical-arrow" style="animation: magicalArrow 2s ease-in-out infinite;">
+                            <i class="fas fa-magic" style="font-size: 2.5rem; color: #ffd93d; filter: drop-shadow(0 0 15px #ffd93d);"></i>
+                            <div class="sparkles"></div>
+                        </div>
+                        <div class="merged-pdf spectacular-result" style="animation: spectacularResult 3s ease-in-out infinite;">
+                            <i class="fas fa-file-pdf result-glow"></i>
+                            <span>✨ Merged PDF</span>
+                            <div class="success-particles"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Upload Section -->
+<section id="upload" class="upload-section py-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden;">
+    <!-- Animated Background -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+    </div>
+    <div class="particles-bg"></div>
+    
+    <div class="container" style="position: relative; z-index: 2;">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="section-header text-center mb-5 animated-header">
+                    <div class="alert alert-info mb-4 pulse-glow" style="font-size: 1.2rem; font-weight: 600; background: rgba(255, 255, 255, 0.9); border: none; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <i class="fas fa-upload fa-2x me-3 bounce-icon"></i>
+                        <strong>UPLOAD YOUR PDF FILES HERE</strong>
+                    </div>
+                    <h2 class="section-title glow-text" style="color: white; font-size: 3rem; text-shadow: 0 0 20px rgba(255,255,255,0.5);">📄 Upload Your PDFs</h2>
+                    <p class="section-subtitle fade-in-up" style="font-size: 1.3rem; color: rgba(255,255,255,0.9);">Click the box below or drag your PDF files directly</p>
+                </div>
+                
+                <div class="upload-card magic-card" style="border: 3px solid rgba(255,255,255,0.3); background: rgba(255, 255, 255, 0.95); box-shadow: 0 20px 60px rgba(0,0,0,0.3); backdrop-filter: blur(15px); border-radius: 25px; position: relative;">
+                    <form action="{{ url_for('upload_files') }}" method="post" enctype="multipart/form-data" id="uploadForm">
+                        <div class="upload-zone hover-lift" onclick="document.getElementById('files').click()" style="border: 4px dashed rgba(255,255,255,0.6); background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)); min-height: 300px; cursor: pointer; border-radius: 20px; transition: all 0.3s ease;">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt floating-icon" style="font-size: 5rem; color: #667eea;"></i>
+                            </div>
+                            <h3 class="typing-text" style="color: #333; font-weight: 700; margin: 20px 0;">📁 CLICK HERE TO SELECT PDF FILES</h3>
+                            <p class="fade-in-text" style="font-size: 1.2rem; color: #666; margin-bottom: 30px;">or drag and drop your PDF files into this box</p>
+                            <input type="file" id="files" name="files" multiple accept=".pdf" required style="display: none;">
+                            <div class="upload-button magic-button" style="background: linear-gradient(45deg, #667eea, #764ba2); color: white; padding: 15px 30px; border-radius: 50px; font-size: 1.1rem; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);">
+                                <i class="fas fa-folder-open me-2 spin-on-hover"></i>BROWSE FILES
+                            </div>
+                            <div class="mt-3">
+                                <small class="shimmer-text" style="color: #666;">Supported format: PDF files only</small>
+                            </div>
+                        </div>
+                        
+                        <div id="selected-files" class="mt-4" style="display: none;">
+                            <h5 style="color: #667eea;">📋 Selected Files:</h5>
+                            <div id="file-list"></div>
+                        </div>
+                        
+                        <div class="upload-options mt-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label" style="font-weight: 600;">📊 Merge Order</label>
+                                    <select class="form-select" name="merge_order" style="border: 2px solid #667eea;">
+                                        <option value="filename">Alphabetical (A-Z)</option>
+                                        <option value="upload_order">Upload Order</option>
+                                        <option value="custom">Custom Order</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" style="font-weight: 600;">📝 Output Name</label>
+                                    <input type="text" class="form-control" name="output_name" placeholder="merged_document.pdf" style="border: 2px solid #667eea;">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-upload rainbow-button" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d, #4ecdc4, #45b7d1); border: none; padding: 20px 50px; border-radius: 50px; font-weight: 700; color: white; font-size: 1.3rem; background-size: 400% 400%; box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);">
+                                <i class="fas fa-magic me-2 sparkle"></i>START MERGING
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-content">
+                    <div class="section-badge mb-3">
+                        <i class="fas fa-info-circle me-2"></i>About Us
+                    </div>
+                    <h2 class="section-title mb-4">About PDF Merger</h2>
+                    <p class="section-text mb-4">
+                        This is a simple and user-friendly PDF Merger web application.
+                        The main purpose of this project is to allow users to easily combine multiple PDF files into a single document without installing any extra software.
+                    </p>
+                    
+                    <div class="mb-4">
+                        <h4 class="mb-3">Key Features:</h4>
+                        <ul class="feature-points">
+                            <li>Upload multiple PDF files at once</li>
+                            <li>Merge them quickly and download the final document</li>
+                            <li>Clean and minimal interface for better user experience</li>
+                            <li>Privacy friendly – uploaded files are only used for processing and are not stored permanently</li>
+                        </ul>
+                    </div>
+                    
+                    <p class="section-text mb-4">
+                        This project was built as a learning project to practice web development (frontend + backend) and to understand how file handling and server-side processing works. In the future, I plan to add more features such as PDF splitting, compression, and password protection.
+                    </p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item reveal flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-shield-alt floating"></i>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h5>100% Secure</h5>
+                                        <p>Your files are processed securely and deleted after 24 hours</p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>🔒 Bank-Level Security</h4>
+                                    <p>Advanced encryption protects your documents</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item reveal flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-bolt floating"></i>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h5>Lightning Fast</h5>
+                                        <p>Merge multiple PDFs in seconds with our optimized engine</p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>⚡ Blazing Speed</h4>
+                                    <p>Process 100+ pages in under 3 seconds</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item reveal flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-mobile-alt floating"></i>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h5>Works Everywhere</h5>
+                                        <p>Access from any device - desktop, tablet, or mobile</p>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <h4>📱 Universal Access</h4>
+                                    <p>Responsive design works on all devices</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="about-visual">
+                    <div class="feature-showcase">
+                        <div class="showcase-item active magnetic">
+                            <i class="fas fa-file-pdf floating"></i>
+                            <span>High Quality</span>
+                        </div>
+                        <div class="showcase-item magnetic">
+                            <i class="fas fa-compress-alt floating"></i>
+                            <span>Optimized Size</span>
+                        </div>
+                        <div class="showcase-item magnetic">
+                            <i class="fas fa-lock floating"></i>
+                            <span>Secure Process</span>
+                        </div>
+                        <div class="showcase-item magnetic">
+                            <i class="fas fa-download floating"></i>
+                            <span>Instant Download</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="steps-section py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Simple steps to merge your PDFs</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="step-card reveal magnetic">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-upload floating"></i>
+                    </div>
+                    <h5>Upload Files</h5>
+                    <p>Select multiple PDF files from your device</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="step-card reveal magnetic">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-sort floating"></i>
+                    </div>
+                    <h5>Arrange Order</h5>
+                    <p>Organize files in your preferred sequence</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="step-card reveal magnetic">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-magic floating"></i>
+                    </div>
+                    <h5>Merge PDFs</h5>
+                    <p>Our system combines your files instantly</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="step-card reveal magnetic">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-download floating"></i>
+                    </div>
+                    <h5>Download</h5>
+                    <p>Get your merged PDF ready to use</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Initialize Animations
+document.addEventListener('DOMContentLoaded', function() {
+    initScrollReveal();
+});
+
+
+
+function initScrollReveal() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+    
+    // Add reveal classes to elements
+    document.querySelectorAll('.card, .feature-item, .step-card').forEach((el, index) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (index * 0.1) + 's';
+        observer.observe(el);
+    });
+    
+    document.querySelectorAll('.section-title').forEach(el => {
+        el.classList.add('reveal-left');
+        observer.observe(el);
+    });
+    
+    document.querySelectorAll('.section-subtitle').forEach(el => {
+        el.classList.add('reveal-right');
+        observer.observe(el);
+    });
+}
+
+
+
+// Enhanced button effects
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.btn').forEach(btn => {
+        btn.classList.add('liquid-btn');
+        
+        btn.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+});
+
+// Add ripple effect CSS
+const rippleCSS = `
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: rippleEffect 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+`;
+
+const style = document.createElement('style');
+style.textContent = rippleCSS;
+document.head.appendChild(style);
+
+function scrollToUpload() {
+    document.getElementById('upload').scrollIntoView({ behavior: 'smooth' });
+}
+
+function scrollToAbout() {
+    document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Spectacular animations and file handling
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all spectacular animations
+    initSpectacularAnimations();
+    initCounterAnimations();
+    initParticleEffects();
+    
+    const fileInput = document.getElementById('files');
+    const selectedFilesDiv = document.getElementById('selected-files');
+    const fileListDiv = document.getElementById('file-list');
+    
+    if (fileInput) {
+        fileInput.addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                selectedFilesDiv.style.display = 'block';
+                fileListDiv.innerHTML = '';
+                
+                for (let i = 0; i < e.target.files.length; i++) {
+                    const file = e.target.files[i];
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'alert alert-success py-2 mb-2 slide-in spectacular-file';
+                    fileItem.style.animationDelay = (i * 0.1) + 's';
+                    fileItem.innerHTML = `<i class="fas fa-file-pdf text-danger me-2 bounce magical-icon"></i><strong>${file.name}</strong>`;
+                    fileListDiv.appendChild(fileItem);
+                }
+            }
+        });
+    }
+});
+
+function initSpectacularAnimations() {
+    // Create magical particles for hero section
+    createHeroParticles();
+    
+    // Add spectacular hover effects
+    addSpectacularHovers();
+    
+    // Initialize word animations
+    initWordAnimations();
+}
+
+function createHeroParticles() {
+    const heroParticles = document.querySelector('.hero-particles');
+    if (heroParticles) {
+        for (let i = 0; i < 50; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'hero-particle';
+            particle.style.cssText = `
+                position: absolute;
+                width: ${Math.random() * 8 + 2}px;
+                height: ${Math.random() * 8 + 2}px;
+                background: ${['#ffd93d', '#ff6b6b', '#4ecdc4', '#45b7d1', '#667eea'][Math.floor(Math.random() * 5)]};
+                border-radius: 50%;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                animation: heroParticleFloat ${Math.random() * 15 + 10}s infinite linear;
+                animation-delay: ${Math.random() * 5}s;
+                box-shadow: 0 0 10px currentColor;
+            `;
+            heroParticles.appendChild(particle);
+        }
+    }
+}
+
+function initCounterAnimations() {
+    const counters = document.querySelectorAll('.glow-number[data-target]');
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        let current = 0;
+        const increment = target / 100;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            if (target > 1000000) {
+                counter.textContent = (current / 1000000).toFixed(0) + 'M+';
+            } else {
+                counter.textContent = current.toFixed(1) + '%';
+            }
+        }, 50);
+    });
+}
+
+function initParticleEffects() {
+    // Add sparkles to magic arrow
+    const sparkles = document.querySelector('.sparkles');
+    if (sparkles) {
+        for (let i = 0; i < 10; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.cssText = `
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: #ffd93d;
+                border-radius: 50%;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                animation: sparkleAnimation ${Math.random() * 2 + 1}s infinite;
+                animation-delay: ${Math.random() * 2}s;
+            `;
+            sparkles.appendChild(sparkle);
+        }
+    }
+    
+    // Add success particles
+    const successParticles = document.querySelector('.success-particles');
+    if (successParticles) {
+        for (let i = 0; i < 15; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'success-particle';
+            particle.style.cssText = `
+                position: absolute;
+                width: 6px;
+                height: 6px;
+                background: #4ecdc4;
+                border-radius: 50%;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                animation: successParticleFloat ${Math.random() * 3 + 2}s infinite;
+                animation-delay: ${Math.random() * 3}s;
+            `;
+            successParticles.appendChild(particle);
+        }
+    }
+}
+
+function addSpectacularHovers() {
+    // Spectacular button hover effects
+    const spectacularBtn = document.querySelector('.spectacular-btn');
+    if (spectacularBtn) {
+        spectacularBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px) scale(1.05)';
+            this.style.boxShadow = '0 25px 50px rgba(255, 107, 107, 0.6)';
+        });
+        
+        spectacularBtn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '0 15px 35px rgba(255, 107, 107, 0.4)';
+        });
+    }
+    
+    // Glass button hover
+    const glassBtn = document.querySelector('.glass-btn');
+    if (glassBtn) {
+        glassBtn.addEventListener('mouseenter', function() {
+            this.style.background = 'rgba(255, 255, 255, 0.2)';
+            this.style.transform = 'translateY(-3px)';
+        });
+        
+        glassBtn.addEventListener('mouseleave', function() {
+            this.style.background = 'rgba(255, 255, 255, 0.1)';
+            this.style.transform = 'translateY(0)';
+        });
+    }
+}
+
+function initWordAnimations() {
+    const words = document.querySelectorAll('.word-animation');
+    words.forEach((word, index) => {
+        word.style.animation = `wordReveal 1s ease-out ${index * 0.2}s both`;
+    });
+}
+
+function initAnimations() {
+    // Create floating particles
+    createFloatingParticles();
+    
+    // Add hover effects
+    addHoverEffects();
+    
+    // Start background animations
+    startBackgroundAnimations();
+}
+
+function createFloatingParticles() {
+    const particlesBg = document.querySelector('.particles-bg');
+    if (particlesBg) {
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'floating-particle';
+            particle.style.cssText = `
+                position: absolute;
+                width: ${Math.random() * 6 + 2}px;
+                height: ${Math.random() * 6 + 2}px;
+                background: rgba(255, 255, 255, ${Math.random() * 0.6 + 0.2});
+                border-radius: 50%;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                animation: floatParticle ${Math.random() * 10 + 15}s infinite linear;
+                animation-delay: ${Math.random() * 5}s;
+            `;
+            particlesBg.appendChild(particle);
+        }
+    }
+}
+
+function addHoverEffects() {
+    // Upload zone hover effect
+    const uploadZone = document.querySelector('.upload-zone');
+    if (uploadZone) {
+        uploadZone.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.02)';
+            this.style.borderColor = 'rgba(255, 255, 255, 0.8)';
+            this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)';
+        });
+        
+        uploadZone.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.borderColor = 'rgba(255,255,255,0.6)';
+            this.style.boxShadow = 'none';
+        });
+    }
+    
+    // Button hover effects
+    const magicButton = document.querySelector('.magic-button');
+    if (magicButton) {
+        magicButton.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.05)';
+            this.style.boxShadow = '0 20px 40px rgba(102, 126, 234, 0.6)';
+        });
+        
+        magicButton.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '0 10px 25px rgba(102, 126, 234, 0.4)';
+        });
+    }
+}
+
+function startBackgroundAnimations() {
+    // Add spectacular CSS animations
+    const spectacularStyle = document.createElement('style');
+    spectacularStyle.textContent = `
+        /* Hero Spectacular Animations */
+        @keyframes heroParticleFloat {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0); opacity: 0; }
+            10% { opacity: 1; transform: scale(1); }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg) scale(0); opacity: 0; }
+        }
+        
+        @keyframes rainbowBorder {
+            0% { border-color: #ff6b6b; }
+            25% { border-color: #ffd93d; }
+            50% { border-color: #4ecdc4; }
+            75% { border-color: #45b7d1; }
+            100% { border-color: #ff6b6b; }
+        }
+        
+        @keyframes rainbowText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes wordReveal {
+            0% { opacity: 0; transform: translateY(50px) rotateX(90deg); }
+            100% { opacity: 1; transform: translateY(0) rotateX(0deg); }
+        }
+        
+        @keyframes buttonPulse {
+            0%, 100% { box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4); }
+            50% { box-shadow: 0 20px 50px rgba(255, 107, 107, 0.8); }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            25% { transform: scale(1.2) rotate(90deg); opacity: 0.8; }
+            50% { transform: scale(0.8) rotate(180deg); opacity: 1; }
+            75% { transform: scale(1.1) rotate(270deg); opacity: 0.9; }
+        }
+        
+        @keyframes rocketLaunch {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(-10deg); }
+            75% { transform: translateY(-3px) rotate(10deg); }
+        }
+        
+        @keyframes floatPdf1 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(2deg); }
+            66% { transform: translateY(-8px) rotate(-1deg); }
+        }
+        
+        @keyframes floatPdf2 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-12px) rotate(-2deg); }
+            66% { transform: translateY(-6px) rotate(1deg); }
+        }
+        
+        @keyframes floatPdf3 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-18px) rotate(1deg); }
+            66% { transform: translateY(-10px) rotate(-2deg); }
+        }
+        
+        @keyframes magicalArrow {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.1); }
+        }
+        
+        @keyframes spectacularResult {
+            0%, 100% { transform: translateY(0px) scale(1); box-shadow: 0 15px 40px rgba(76, 205, 196, 0.3); }
+            50% { transform: translateY(-8px) scale(1.05); box-shadow: 0 25px 60px rgba(76, 205, 196, 0.6); }
+        }
+        
+        @keyframes sparkleAnimation {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        }
+        
+        @keyframes successParticleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+        
+        /* Enhanced Shape Animations */
+        .pulse-shape { animation: pulseShape 3s ease-in-out infinite; }
+        .rotate-shape { animation: rotateShape 8s linear infinite; }
+        .bounce-shape { animation: bounceShape 4s ease-in-out infinite; }
+        .wave-shape { animation: waveShape 6s ease-in-out infinite; }
+        .spiral-shape { animation: spiralShape 10s linear infinite; }
+        .morph-shape { animation: morphShape 5s ease-in-out infinite; }
+        
+        @keyframes pulseShape {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.5); opacity: 0.6; }
+        }
+        
+        @keyframes rotateShape {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1.2); }
+        }
+        
+        @keyframes bounceShape {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+        
+        @keyframes waveShape {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            25% { transform: translateX(20px) rotate(90deg); }
+            50% { transform: translateX(0px) rotate(180deg); }
+            75% { transform: translateX(-20px) rotate(270deg); }
+        }
+        
+        @keyframes spiralShape {
+            0% { transform: rotate(0deg) translateX(30px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
+        }
+        
+        @keyframes morphShape {
+            0%, 100% { border-radius: 50%; transform: scale(1); }
+            25% { border-radius: 0%; transform: scale(1.2); }
+            50% { border-radius: 50%; transform: scale(0.8); }
+            75% { border-radius: 25%; transform: scale(1.1); }
+        }
+        
+        /* Icon Animations */
+        .twinkle { animation: twinkle 2s ease-in-out infinite; }
+        .rocket-launch { animation: rocketLaunch 1s ease-in-out infinite; }
+        .pulse-icon { animation: pulseIcon 1.5s ease-in-out infinite; }
+        .pdf-icon-glow { filter: drop-shadow(0 0 10px #dc3545); }
+        .result-glow { filter: drop-shadow(0 0 15px #4ecdc4); }
+        .magical-icon { animation: magicalIcon 2s ease-in-out infinite; }
+        
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes magicalIcon {
+            0%, 100% { transform: rotate(0deg) scale(1); filter: hue-rotate(0deg); }
+            25% { transform: rotate(90deg) scale(1.1); filter: hue-rotate(90deg); }
+            50% { transform: rotate(180deg) scale(1); filter: hue-rotate(180deg); }
+            75% { transform: rotate(270deg) scale(1.1); filter: hue-rotate(270deg); }
+        }
+        
+        /* Grid Background */
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: 1;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Glow Effects */
+        .glow-number {
+            text-shadow: 0 0 20px currentColor;
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% { text-shadow: 0 0 20px currentColor; }
+            50% { text-shadow: 0 0 30px currentColor, 0 0 40px currentColor; }
+        }
+        
+        .spectacular-file {
+            animation: spectacularFileEntry 0.8s ease-out;
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.1), rgba(255, 255, 255, 0.9));
+            border: 2px solid rgba(40, 167, 69, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        @keyframes spectacularFileEntry {
+            0% { opacity: 0; transform: translateX(-100px) rotate(-10deg) scale(0.8); }
+            100% { opacity: 1; transform: translateX(0) rotate(0deg) scale(1); }
+        }
+        
+        /* Magic Glow for PDF Stack */
+        .magic-glow {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: radial-gradient(circle, rgba(255, 215, 61, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: magicGlow 3s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        @keyframes magicGlow {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.6; }
+        }
+        
+        .spectacular-stack {
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+        }
+        
+        .spectacular-pro {
+            font-size: 1.3em !important;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 61, 0.8));
+        }
+        
+        .typewriter {
+            animation: typewriter 3s steps(100) 1s both;
+        }
+        
+        @keyframes typewriter {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+        
+        .hero-waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
+            animation: waveMove 8s ease-in-out infinite;
+        }
+        
+        @keyframes waveMove {
+            0%, 100% { transform: translateX(0) scaleY(1); }
+            50% { transform: translateX(20px) scaleY(1.2); }
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        .floating-shapes .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: floatShape 8s ease-in-out infinite;
+        }
+        
+        .shape-1 { width: 80px; height: 80px; top: 10%; left: 10%; animation-delay: 0s; }
+        .shape-2 { width: 120px; height: 120px; top: 20%; right: 15%; animation-delay: 2s; }
+        .shape-3 { width: 60px; height: 60px; bottom: 30%; left: 20%; animation-delay: 4s; }
+        .shape-4 { width: 100px; height: 100px; top: 60%; right: 30%; animation-delay: 1s; }
+        .shape-5 { width: 90px; height: 90px; bottom: 20%; right: 10%; animation-delay: 3s; }
+        
+        @keyframes floatShape {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(-10px) rotate(240deg); }
+        }
+        
+        .floating-icon {
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+        
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .bounce-icon {
+            animation: bounceIcon 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounceIcon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+            50% { box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4); }
+        }
+        
+        .glow-text {
+            animation: glowText 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glowText {
+            from { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+            to { text-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 40px rgba(102, 126, 234, 0.3); }
+        }
+        
+        .rainbow-button {
+            animation: rainbow 3s ease-in-out infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .sparkle {
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(90deg) scale(1.1); }
+            50% { transform: rotate(180deg) scale(1); }
+            75% { transform: rotate(270deg) scale(1.1); }
+        }
+        
+        .magic-card {
+            animation: magicCard 4s ease-in-out infinite;
+        }
+        
+        @keyframes magicCard {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.6s ease-out forwards;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .animated-header {
+            animation: headerAnimation 1s ease-out;
+        }
+        
+        @keyframes headerAnimation {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    `;
+    document.head.appendChild(spectacularStyle);
+}
+
+function showSelectedFiles(files) {
+    const fileList = document.getElementById('selected-files-list');
+    if (!fileList) {
+        const container = document.createElement('div');
+        container.id = 'selected-files-list';
+        container.className = 'mt-3';
+        document.querySelector('.upload-zone').parentNode.appendChild(container);
+    }
+    
+    const container = document.getElementById('selected-files-list');
+    container.innerHTML = '';
+    
+    if (files.length === 0) return;
+    
+    const title = document.createElement('h6');
+    title.textContent = `Selected Files (${files.length}):`;
+    title.className = 'mb-2 neon-glow';
+    container.appendChild(title);
+    
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const fileItem = document.createElement('div');
+        
+        if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
+            fileItem.className = 'alert alert-info d-flex justify-content-between align-items-center py-2 reveal';
+            fileItem.style.animationDelay = (i * 0.1) + 's';
+            fileItem.innerHTML = `
+                <div>
+                    <i class="fas fa-file-pdf text-danger me-2 floating"></i>
+                    <strong>${file.name}</strong>
+                    <small class="text-muted d-block">${(file.size / 1024).toFixed(1)} KB</small>
+                </div>
+                <span class="badge bg-success pulse">PDF</span>
+            `;
+        } else {
+            fileItem.className = 'alert alert-warning d-flex justify-content-between align-items-center py-2 reveal';
+            fileItem.style.animationDelay = (i * 0.1) + 's';
+            fileItem.innerHTML = `
+                <div>
+                    <i class="fas fa-file text-warning me-2"></i>
+                    <strong>${file.name}</strong>
+                    <small class="text-muted d-block">Not a PDF file</small>
+                </div>
+                <span class="badge bg-warning">Invalid</span>
+            `;
+        }
+        
+        container.appendChild(fileItem);
+        
+        // Trigger animation
+        setTimeout(() => {
+            fileItem.classList.add('active');
+        }, i * 100);
+    }
+}
+</script>
+{% endblock %}

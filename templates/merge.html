@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+
+{% block title %}PDF Merger - Review & Merge{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="card glass">
+            <div class="card-header text-center">
+                <i class="fas fa-tasks fa-2x mb-2"></i>
+                <h3 class="mb-0">Review Files & Merge Order</h3>
+                <p class="mb-0 mt-2 opacity-75">{{ file_count or 0 }} files ready to merge</p>
+            </div>
+            <div class="card-body">
+                <form action="{{ url_for('process_merge') }}" method="post">
+                    <div class="mb-3">
+                        <h5>Files to merge ({{ files|length }}):</h5>
+                        <div id="file-list" class="list-group sortable-list">
+                            {% if files and files|length > 0 %}
+                                <div class="alert alert-success mb-3">
+                                    <i class="fas fa-check-circle me-2"></i>
+                                    <strong>{{ files|length }} PDF files ready to merge</strong>
+                                    <small class="d-block mt-1">Drag and drop to reorder files</small>
+                                </div>
+                                {% for file in files %}
+                                <div class="list-group-item d-flex justify-content-between align-items-center sortable-item" 
+                                     data-filename="{{ file.name }}" 
+                                     style="background: linear-gradient(135deg, rgba(40, 167, 69, 0.05), rgba(255, 255, 255, 1)); cursor: move;">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-grip-vertical text-muted me-2" title="Drag to reorder"></i>
+                                        <i class="fas fa-file-pdf text-danger me-2 fa-lg"></i>
+                                        <div>
+                                            <strong>{{ file.name }}</strong>
+                                            <small class="text-muted d-block">
+                                                <i class="fas fa-info-circle me-1"></i>
+                                                {{ file.size }} | {{ file.pages }} pages
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="badge bg-success me-2">Ready</span>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary me-1" onclick="moveUp(this)" title="Move Up">↑</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary me-1" onclick="moveDown(this)" title="Move Down">↓</button>
+                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFile(this)" title="Remove">×</button>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="alert alert-warning">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    <strong>No files found!</strong> 
+                                    <div class="mt-2">
+                                        <a href="{{ url_for('index') }}" class="btn btn-sm btn-primary me-2">
+                                            <i class="fas fa-upload me-1"></i>Upload Files
+                                        </a>
+                                        <a href="{{ url_for('debug_session') }}" class="btn btn-sm btn-info me-2">
+                                            <i class="fas fa-bug me-1"></i>Debug
+                                        </a>
+                                        <a href="{{ url_for('clear_session') }}" class="btn btn-sm btn-warning">
+                                            <i class="fas fa-trash me-1"></i>Clear Session
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="text-center py-4">
+                                    <p class="text-muted">Debug Info:</p>
+                                    <small class="text-muted">
+                                        Files in template: {{ files|length if files else 'None' }}<br>
+                                        File count: {{ file_count or 'Not set' }}
+                                    </small>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% if files and files|length > 0 %}
+                    <div class="mb-3">
+                        <label for="output_filename" class="form-label">Output filename:</label>
+                        <input type="text" class="form-control" id="output_filename" name="output_filename" value="merged_document.pdf">
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="add_bookmarks" name="add_bookmarks">
+                            <label class="form-check-label" for="add_bookmarks">
+                                Add bookmarks for each original file
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            MERGE {{ files|length }} PDF{{ 's' if files|length > 1 else '' }} NOW
+                        </button>
+                        <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                            Back to Upload
+                        </a>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-4">
+                        <p class="text-muted">No files available to merge.</p>
+                        <a href="{{ url_for('index') }}" class="btn btn-primary">
+                            <i class="fas fa-upload me-2"></i>Upload Files
+                        </a>
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Merge Preview</h5>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-file-pdf fa-3x text-danger"></i>
+                    </div>
+                    <p><strong>Total Pages:</strong> <span id="total-pages">{{ files|sum(attribute='pages') if files else 0 }}</span></p>
+                    <p><strong>Files Count:</strong> <span id="file-count">{{ files|length if files else 0 }}</span></p>
+                    <p><strong>Status:</strong> <span class="badge bg-success">Ready to Merge</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// File reordering functionality
+let draggedElement = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSortable();
+    calculateTotalPages();
+});
+
+function initializeSortable() {
+    const sortableList = document.getElementById('file-list');
+    if (!sortableList) return;
+    
+    const sortableItems = sortableList.querySelectorAll('.sortable-item');
+    
+    sortableItems.forEach(item => {
+        item.draggable = true;
+        
+        item.addEventListener('dragstart', function(e) {
+            draggedElement = this;
+            this.style.opacity = '0.5';
+            e.dataTransfer.effectAllowed = 'move';
+        });
+        
+        item.addEventListener('dragend', function(e) {
+            this.style.opacity = '1';
+            draggedElement = null;
+        });
+        
+        item.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        });
+        
+        item.addEventListener('drop', function(e) {
+            e.preventDefault();
+            if (draggedElement && draggedElement !== this) {
+                const rect = this.getBoundingClientRect();
+                const midpoint = rect.top + rect.height / 2;
+                
+                if (e.clientY < midpoint) {
+                    this.parentNode.insertBefore(draggedElement, this);
+                } else {
+                    this.parentNode.insertBefore(draggedElement, this.nextSibling);
+                }
+                
+                saveNewOrder();
+            }
+        });
+    });
+}
+
+function moveUp(button) {
+    const item = button.closest('.sortable-item');
+    const prevItem = item.previousElementSibling;
+    if (prevItem && prevItem.classList.contains('sortable-item')) {
+        item.parentNode.insertBefore(item, prevItem);
+        saveNewOrder();
+    }
+}
+
+function moveDown(button) {
+    const item = button.closest('.sortable-item');
+    const nextItem = item.nextElementSibling;
+    if (nextItem && nextItem.classList.contains('sortable-item')) {
+        item.parentNode.insertBefore(nextItem, item);
+        saveNewOrder();
+    }
+}
+
+function removeFile(button) {
+    if (confirm('Remove this file from the merge?')) {
+        const item = button.closest('.sortable-item');
+        item.remove();
+        saveNewOrder();
+        calculateTotalPages();
+    }
+}
+
+function saveNewOrder() {
+    const items = document.querySelectorAll('.sortable-item');
+    const order = Array.from(items).map(item => item.dataset.filename);
+    
+    fetch('/reorder', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ order: order })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            console.log('Files reordered successfully');
+        } else {
+            console.error('Failed to reorder files:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error reordering files:', error);
+    });
+}
+
+function calculateTotalPages() {
+    const fileItems = document.querySelectorAll('.sortable-item');
+    let totalPages = 0;
+    
+    fileItems.forEach(item => {
+        const pageText = item.querySelector('small');
+        if (pageText) {
+            const match = pageText.textContent.match(/(\d+) pages/);
+            if (match) {
+                totalPages += parseInt(match[1]);
+            }
+        }
+    });
+    
+    const totalPagesElement = document.getElementById('total-pages');
+    if (totalPagesElement) {
+        totalPagesElement.textContent = totalPages;
+    }
+    
+    const fileCountElement = document.getElementById('file-count');
+    if (fileCountElement) {
+        fileCountElement.textContent = fileItems.length;
+    }
+}
+}
+</script>
+{% endblock %}

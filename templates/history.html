@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}PDF Merger - History{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">Merge History</h3>
+                <form method="POST" action="{{ url_for('clear_history') }}" style="display: inline;">
+                    <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure you want to clear all history?')">
+                        Clear History
+                    </button>
+                </form>
+            </div>
+            <div class="card-body">
+                {% if history %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Output File</th>
+                                <th>Input Files</th>
+                                <th>Pages</th>
+                                <th>Size</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in history %}
+                            <tr>
+                                <td>{{ item.date }}</td>
+                                <td>{{ item.output_file }}</td>
+                                <td>
+                                    <small>{{ item.input_count }} files</small>
+                                    <div class="text-muted small">{{ item.input_files[:50] }}...</div>
+                                </td>
+                                <td>{{ item.pages }}</td>
+                                <td>{{ item.size }}</td>
+                                <td>
+                                    <span class="badge bg-{{ 'success' if item.status == 'completed' else 'warning' }}">
+                                        {{ item.status }}
+                                    </span>
+                                </td>
+                                <td>
+                                    {% if item.status == 'completed' %}
+                                    <a href="{{ url_for('download_file', filename=item.output_file) }}" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-download me-1"></i>Download
+                                    </a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="text-center py-5">
+                    <i class="fas fa-history fa-3x text-muted mb-3"></i>
+                    <h5 class="text-muted">No merge history yet</h5>
+                    <p class="text-muted">Your completed merges will appear here.</p>
+                    <a href="{{ url_for('index') }}" class="btn btn-primary">Start Merging</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
